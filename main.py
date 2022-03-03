@@ -124,7 +124,7 @@ class Board:
                     print("Корабль ранен!")
                     return True
 
-        self.field[d.x][d.y] = "."
+        self.field[d.x][d.y] = "т"
         print("Мимо!")
         return False
 #
