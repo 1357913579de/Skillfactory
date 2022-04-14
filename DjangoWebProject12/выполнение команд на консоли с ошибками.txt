@@ -1,0 +1,545 @@
+Windows PowerShell
+Windows PowerShell
+Windows PowerShell
+Windows PowerShell
+Windows PowerShell
+<User: Author>
+>>> u2 User.objects.create_user(username='Author2')
+  File "<console>", line 1
+    u2 User.objects.create_user(username='Author2')
+       ^
+SyntaxError: invalid syntax
+>>> u1
+<User: Author>
+>>> u1 = User.objects.create_user(username='Author2')
+>>> Author.objects.create(authorUser=u1)
+<Author: Author object (1)>
+>>> Author2.objects.create(authorUser=u2) 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Author2' is not defined
+>>> u2 = User.objects.create_user(username='Author2')                                     
+Traceback (most recent call last):
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: auth_user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 160, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 154, in _create_user
+    user.save(using=self._db)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
+>>> u2 = User.objects.create_user(username='Author3') 
+>>> Author2.objects.create(authorUser=u2)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Author2' is not defined
+>>>  Author3.objects.create(author2User=u2)
+  File "<console>", line 1
+    Author3.objects.create(author2User=u2)
+    ^
+IndentationError: unexpected indent
+>>>  Author2.objects.create(author2User=u2) 
+  File "<console>", line 1
+    Author2.objects.create(author2User=u2)
+    ^
+IndentationError: unexpected indent
+>>> u3 = User.objects.create_user(username='Author3') 
+Traceback (most recent call last):
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: auth_user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 160, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 154, in _create_user
+    user.save(using=self._db)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
+>>> Author3.objects.create(author2User=u2) 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Author3' is not defined
+>>> Author3.objects.create(author3User=u2) 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Author3' is not defined
+>>> Author.objects.create(authorUser=u1)
+Traceback (most recent call last):
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: news_author.authorUser_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\query.py", line 514, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return executor(sql, params, many, context)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: news_author.authorUser_id
+>>> u3 = User.objects.create_user(username='Author3') 
+Traceback (most recent call last):
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: auth_user.username
+
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 160, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 154, in _create_user
+    user.save(using=self._db)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+    return executor(sql, params, many, context)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
+>>>
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    u3 = User.objects.create_user(username='Author3')
+Traceback (most recent call last):ects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)lfactory\DjangoWebProject12\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)ngoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+sqlite3.IntegrityError: UNIQUE constraint failed: auth_user.username
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+The above exception was the direct cause of the following exception:
+django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 160, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 154, in _create_user
+    user.save(using=self._db)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
+>>> u3 = User.objects.create_user(username='Semyon') 
+>>> u3
+<User: Semyon>
+>>> Author3.objects.create(authorUser=u3)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Author3' is not defined
+>>> Author.objects.create(authorUser=u3)  
+<Author: Author object (2)>
+>>> Category.objects.create(name='IT')
+<Category: Category object (1)>
+>>> Category.objects.create(name='IT')
+Traceback (most recent call last):
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: news_category.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\query.py", line 514, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: news_category.name
+>>> Category.objects.create(name='music')
+<Category: Category object (3)>
+>>> Category.objects.create(name='')
+KeyboardInterrupt
+>>> Category.objects.create(name='movie')
+<Category: Category object (4)>
+>>> author = Author.object.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Author' has no attribute 'object'
+>>>
+KeyboardInterrupt
+>>> author = Author.objects.get(id=1)
+>>> autor
+Traceback (most recent call last):
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> author = Author.objects.get(id=2)
+>>> author
+<Author: Author object (2)>
+>>>
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> author = Author.objects.get(id=1)
+>>> author = Author.objects.get(id=1)
+>>> author = Author.objects.get(id=2) 
+>>> author                           
+>>> hor: Author object (2)>
+>>> 
+>>> Poct.objects.create(author=author, categoryType='NW', title='sometitle', text='somebigtext')
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Poct' is not defined
+>>> Post.objects.create(author=author, categoryType='NW', title='sometitle', text='somebigtext') 
+<Post: Post object (1)>
+>>> Post.objects.get(id=1)
+<Post: Post object (1)>
+>>>  Post.objects.get(id=1).title
+  File "<console>", line 1
+    Post.objects.get(id=1).title
+    ^
+IndentationError: unexpected indent
+>>> Post.objects.get(id=1).title
+'sometitle'
+>>>  Post.objects.get(id=1).postCategory.add(Category.objects.get(id=1))
+  File "<console>", line 1
+    Post.objects.get(id=1).postCategory.add(Category.objects.get(id=1))
+    ^
+IndentationError: unexpected indent
+>>> Post.objects.get(id=1).postCategory.add(Category.objects.get(id=1))
+>>> Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=Author.objects.get(id=1).authorUser, text='anytextbyauthor') 
+<Comment: Comment object (1)>
+>>> Comment.objects.get(id=1).like()
+>>> Comment.objects.get(id=1).rating
+1
+>>> Comment.objects.get(id=1).dislike()
+>>> Comment.objects.get(id=1).dislike()
+>>> Comment.objects.get(id=1).dislike()
+>>> Comment.objects.get(id=1).rating
+-2
+>>> Author.objects.get(id=1)  
+<Author: Author object (1)>
+>>> a = 
+KeyboardInterrupt
+>>> a = Author.objects.get(id=1)                          
+>>> a.update_rating()   
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\NewsPape\news\models.py", line 12, in update_rating
+    pRat += postRat.get('postRating')
+TypeError: unsupported operand type(s) for +=: 'int' and 'NoneType'
+>>> a.update_rating()                                       
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\NewsPape\news\models.py", line 12, in update_rating
+    pRat += postRat.get('postRating')
+TypeError: unsupported operand type(s) for +=: 'int' and 'NoneType'
+>>> a.ratingAuthor    
+0
+>>> Post.objects.get(id=1).like()
+>>> a.update_rating()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\NewsPape\news\models.py", line 12, in update_rating
+    pRat += postRat.get('postRating')
+TypeError: unsupported operand type(s) for +=: 'int' and 'NoneType'
+>>>  a.ratingAuthor
+  File "<console>", line 1
+    a.ratingAuthor
+    ^
+IndentationError: unexpected indent
+>>>  a.ratingAuthor
+  File "<console>", line 1
+    a.ratingAuthor
+    ^
+IndentationError: unexpected indent
+>>>  a.ratingAuthor 
+  File "<console>", line 1
+    a.ratingAuthor
+    ^
+IndentationError: unexpected indent
+>>>  a.ratingAuthor
+  File "<console>", line 1
+    a.ratingAuthor
+    ^
+IndentationError: unexpected indent
+>>>
+>>> 
+>>> 
+>>>  a.ratingAuthor
+  File "<console>", line 1
+    a.ratingAuthor
+    ^
+IndentationError: unexpected indent
+>>>  a.ratingAuthor
+  File "<console>", line 1
+    a.ratingAuthor
+    ^
+IndentationError: unexpected indent
+>>> a = Author.objects.order_by('-ratingAuthor')[:1]
+>>> a
+<QuerySet [<Author: Author object (1)>]>
+>>> c = User.objects.create_user(username='Author2')  
+Traceback (most recent call last):
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: auth_user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 160, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 154, in _create_user
+    user.save(using=self._db)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
+>>> c = User.objects.create_user(username='Author3')
+Traceback (most recent call last):
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: UNIQUE constraint failed: auth_user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 160, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\models.py", line 154, in _create_user
+    user.save(using=self._db)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\79148\PycharmProjects\Skillfactory\DjangoWebProject12\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username
